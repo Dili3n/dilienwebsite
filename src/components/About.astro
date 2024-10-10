@@ -37,22 +37,23 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const birthDate = new Date(2002, 5, 23, 3, 33); // Mois commencent à 0 (juin est 5)
-
-        const totalSecondsAt80 = Math.floor((80 * 365.25 * 24 * 60 * 60));
+        const totalSecondsAt80 = Math.floor(80 * 365.25 * 24 * 60 * 60);
 
         setInterval(() => {
             const currentDate = new Date();
-            const secondsLived = Math.floor((currentDate - birthDate) / 1000);
-
+            const secondsLived = Math.floor((currentDate.getTime() - birthDate.getTime()) / 1000);
             const progressPercentage = (secondsLived / totalSecondsAt80) * 100;
 
             const progressBar = document.getElementById("progress-bar");
             const progressText = document.getElementById("progress-text");
             const progressPercentageText = document.getElementById("progress-percentage");
 
-            progressBar.style.width = Math.min(progressPercentage, 100) + '%';
-            progressText.innerHTML = `Né depuis <span class="font-semibold">${secondsLived}</span> secondes.`;
-            progressPercentageText.innerHTML = Math.floor(progressPercentage) + '%';
+            // Vérifier si les éléments existent avant d'y accéder
+            if (progressBar && progressText && progressPercentageText) {
+                progressBar.style.width = Math.min(progressPercentage, 100) + '%';
+                progressText.innerHTML = `Né depuis <span class="font-semibold">${secondsLived}</span> secondes.`;
+                progressPercentageText.innerHTML = Math.floor(progressPercentage) + '%';
+            }
         }, 1000);
     });
 </script>
