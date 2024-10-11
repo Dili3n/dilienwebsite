@@ -10,6 +10,7 @@ import Contact from "../components/Contact.astro";
 <Layout title="Dilien Oeuvrard">
 	<main>
 		<section>
+			<div class="glow-container"></div>
 			<Menu />
 			<Title />
 		</section>
@@ -79,6 +80,21 @@ import Contact from "../components/Contact.astro";
 		gap: 2rem;
 		padding: 0;
 	}
+	.glow-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at center,
+        rgba(20, 184, 166, 0.15) 0%,
+        rgba(20, 184, 166, 0.05) 30%,
+        transparent 70%
+      );
+      animation: moveGlow 20s infinite alternate;
+    }
 </style>
 
 <script>

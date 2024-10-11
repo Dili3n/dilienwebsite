@@ -1,24 +1,39 @@
 <!-- Section About Me -->
-<section id="about" class="flex flex-col items-center justify-center my-10 md:my-20 min-h-screen">
+<section
+    id="about"
+    class="flex flex-col items-center justify-center my-10 md:my-20 min-h-screen"
+>
+    <div class="glow-container"></div>
     <div class="flex flex-col md:flex-row items-center justify-center w-full">
         <!-- Section gauche: Texte de présentation -->
         <div class="md:w-1/2 p-4 text-left">
             <h2 class="text-4xl font-bold mb-5">Un peu plus sur moi</h2>
-            <h2 class="text-teal-500 text-4xl font-bold mb-10">Qui suis-je ?</h2>
+            <h2 class="text-teal-500 text-4xl font-bold mb-10">
+                Qui suis-je ?
+            </h2>
             <p class="text-lg mb-6">
-                Salut ! Je m'appelle <span class="text-teal-500">Dilien Oeuvrard</span>, développeur freelance passionné par la création d'applications web performantes et intuitives. 
-                Je travaille principalement avec des technologies comme JavaScript, Vue.js ou encore Astro.js. 
-                Ma mission est de résoudre des problèmes complexes à travers des solutions efficaces et élégantes.
+                Salut ! Je m'appelle <span class="text-teal-500"
+                    >Dilien Oeuvrard</span
+                >, développeur freelance passionné par la création
+                d'applications web performantes et intuitives. Je travaille
+                principalement avec des technologies comme JavaScript, Vue.js ou
+                encore Astro.js. Ma mission est de résoudre des problèmes
+                complexes à travers des solutions efficaces et élégantes.
             </p>
-            <br>
+            <br />
             <p class="text-lg">
-                Si vous avez un projet ou souhaitez collaborer, n'hésitez pas à me contacter !
+                Si vous avez un projet ou souhaitez collaborer, n'hésitez pas à
+                me contacter !
             </p>
         </div>
 
         <!-- Section droite: Image -->
         <div class="md:w-1/2 flex flex-col items-center">
-            <img src="me.webp" alt="Dilien Oeuvrard" class="w-72 h-auto rounded-lg shadow-lg mb-4">
+            <img
+                src="me.webp"
+                alt="Dilien Oeuvrard"
+                class="w-72 h-auto rounded-lg mb-4"
+            />
             <div class="w-24 h-1 bg-teal-500"></div>
         </div>
     </div>
@@ -27,33 +42,69 @@
     <div class="my-4 mt-10 mb-10 relative w-full max-w-md">
         <h2 class="text-2xl font-bold mb-4">Ma vie</h2>
         <div class="bg-gray-200 rounded-full h-6 relative group">
-            <div id="progress-bar" class="bg-teal-500 h-6 rounded-full" style="width: 0%;"></div>
-            <span id="progress-percentage" class="absolute left-1/2 transform -translate-x-1/2 -translate-y-8 text-sm bg-gray-800 text-white p-1 rounded hidden group-hover:block">0%</span>
+            <div
+                id="progress-bar"
+                class="bg-teal-500 h-6 rounded-full"
+                style="width: 0%;"
+            >
+            </div>
+            <span
+                id="progress-percentage"
+                class="absolute left-1/2 transform -translate-x-1/2 -translate-y-8 text-sm bg-gray-800 text-white p-1 rounded hidden group-hover:block"
+                >0%</span
+            >
         </div>
-        <p id="progress-text" class="mt-2 text-sm text-gray-600 text-center">Vous avez vécu <span class="font-semibold">0</span> secondes de votre vie.</p>
+        <p id="progress-text" class="mt-2 text-sm text-gray-600 text-center">
+            Vous avez vécu <span class="font-semibold">0</span> secondes de votre
+            vie.
+        </p>
     </div>
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const birthDate = new Date(2002, 5, 23, 3, 33); // Mois commencent à 0 (juin est 5)
         const totalSecondsAt80 = Math.floor(80 * 365.25 * 24 * 60 * 60);
 
         setInterval(() => {
             const currentDate = new Date();
-            const secondsLived = Math.floor((currentDate.getTime() - birthDate.getTime()) / 1000);
+            const secondsLived = Math.floor(
+                (currentDate.getTime() - birthDate.getTime()) / 1000,
+            );
             const progressPercentage = (secondsLived / totalSecondsAt80) * 100;
 
             const progressBar = document.getElementById("progress-bar");
             const progressText = document.getElementById("progress-text");
-            const progressPercentageText = document.getElementById("progress-percentage");
+            const progressPercentageText = document.getElementById(
+                "progress-percentage",
+            );
 
             // Vérifier si les éléments existent avant d'y accéder
             if (progressBar && progressText && progressPercentageText) {
-                progressBar.style.width = Math.min(progressPercentage, 100) + '%';
+                progressBar.style.width =
+                    Math.min(progressPercentage, 100) + "%";
                 progressText.innerHTML = `Né depuis <span class="font-semibold">${secondsLived}</span> secondes.`;
-                progressPercentageText.innerHTML = Math.floor(progressPercentage) + '%';
+                progressPercentageText.innerHTML =
+                    Math.floor(progressPercentage) + "%";
             }
         }, 1000);
     });
 </script>
+
+<style>
+    .glow-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at center,
+            rgba(20, 184, 166, 0.15) 0%,
+            rgba(20, 184, 166, 0.05) 30%,
+            transparent 70%
+        );
+        animation: moveGlow 20s infinite alternate;
+    }
+</style>
