@@ -88,7 +88,6 @@ document.addEventListener('scroll', function() {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
 
-        // Si la section est visible dans la fenêtre, applique l'effet
         if (sectionTop >= 0 && sectionTop < windowHeight) {
             section.classList.add('active');
         } else {
