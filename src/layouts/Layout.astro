@@ -39,8 +39,8 @@ const { title } = Astro.props;
     html {
         font-family: system-ui, sans-serif;
         background: #13151a;
-        scroll-snap-type: y mandatory; /* Snap dans l'axe Y (vertical) */
-        scroll-behavior: smooth; /* Défilement fluide */
+        /* scroll-snap-type: y mandatory;
+        scroll-behavior: smooth; */
         height: 100%;
         overflow-y: scroll;
     }
@@ -55,50 +55,31 @@ const { title } = Astro.props;
             Courier New,
             monospace;
     }
-    body {
+    /* body {
         scroll-snap-type: y mandatory;
-        /* Utilisation d'un zoom adaptatif */
-        zoom: 1; /* S'adapte à la mise à l'échelle de l'utilisateur */
-    }
+        zoom: 1;
+    } */
     section {
         scroll-snap-align: start;
-        min-height: 100vh;
-		max-height: 100vh;
+		min-height: 100vh;
         transition: transform 0.5s ease;
-        transform: translateY(1px); /* Légèrement décalé vers le bas au départ */
+        transform: translateY(1px);
     }
 
     section.active {
-        transform: translateY(0); /* Remet à la position originale quand actif */
+        transform: translateY(0)
     }
 
-    /* Animation du texte d'indication de scroll */
-    #scroll-indicator span {
-        font-size: 1.2rem;
-        animation: fadeInOut 4s ease-in-out infinite;
-    }
-
-    @keyframes fadeInOut {
-        0%,
-        100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0;
-        }
-    }
-
-    /* Désactiver le snap et l'animation sur mobile */
     @media (max-width: 768px) {
         html {
-            scroll-snap-type: none; /* Désactiver le snap */
+            scroll-snap-type: none;
         }
         section {
-            transition: none; /* Désactiver les transitions */
-            transform: none; /* Pas de translation initiale */
+            transition: none; 
+            transform: none;
         }
         #scroll-indicator {
-            display: none; /* Cacher l'indicateur sur mobile si nécessaire */
+            display: none;
         }
     }
 </style>
