@@ -10,7 +10,10 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio professionnel en Développement informatique : développeur en freelance passionné par la création d'application web performantes. Contactez-moi pour des collaborations et opportunités." />
+		<meta
+			name="description"
+			content="Portfolio professionnel en Développement informatique : développeur en freelance passionné par la création d'application web performantes. Contactez-moi pour des collaborations et opportunités."
+		/>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -58,8 +61,7 @@ const { title } = Astro.props;
 	section {
 		scroll-snap-align: start;
 		min-height: 100vh;
-		transition:
-			transform 0.5s ease;
+		transition: transform 0.5s ease;
 		transform: translateY(
 			1px
 		); /* Légèrement décalé vers le bas au départ */
@@ -84,6 +86,20 @@ const { title } = Astro.props;
 		}
 		50% {
 			opacity: 0;
+		}
+	}
+
+	/* Désactiver le snap et l'animation sur mobile */
+	@media (max-width: 768px) {
+		html {
+			scroll-snap-type: none; /* Désactiver le snap */
+		}
+		section {
+			transition: none; /* Désactiver les transitions */
+			transform: none; /* Pas de translation initiale */
+		}
+		#scroll-indicator {
+			display: none; /* Cacher l'indicateur sur mobile si nécessaire */
 		}
 	}
 </style>
