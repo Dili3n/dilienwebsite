@@ -9,8 +9,10 @@ import Contact from "../components/Contact.astro";
 
 <Layout title="Dilien Oeuvrard">
 	<main>
-		<Menu />
-		<Title />
+		<section>
+			<Menu />
+			<Title />
+		</section>
 		<About />
 		<Competences />
 		<Contact />
@@ -78,3 +80,21 @@ import Contact from "../components/Contact.astro";
 		padding: 0;
 	}
 </style>
+
+<script>
+document.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        // Si la section est visible dans la fenêtre, applique l'effet
+        if (sectionTop >= 0 && sectionTop < windowHeight) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+    });
+});
+
+</script>

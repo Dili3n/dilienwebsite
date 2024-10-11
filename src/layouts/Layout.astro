@@ -16,8 +16,8 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body >
-		<slot/>
+	<body>
+		<slot />
 		<div class="back-style"></div>
 	</body>
 </html>
@@ -36,6 +36,10 @@ const { title } = Astro.props;
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
+		scroll-snap-type: y mandatory; /* Snap dans l'axe Y (vertical) */
+		scroll-behavior: smooth; /* Défilement fluide */
+		height: 100%;
+		overflow-y: scroll;
 	}
 	code {
 		font-family:
@@ -47,5 +51,39 @@ const { title } = Astro.props;
 			Bitstream Vera Sans Mono,
 			Courier New,
 			monospace;
+	}
+	body {
+		scroll-snap-type: y mandatory;
+	}
+	section {
+		scroll-snap-align: start;
+		min-height: 100vh;
+		transition:
+			transform 0.5s ease;
+		transform: translateY(
+			1px
+		); /* Légèrement décalé vers le bas au départ */
+	}
+
+	section.active {
+		transform: translateY(
+			0
+		); /* Remet à la position originale quand actif */
+	}
+
+	/* Animation du texte d'indication de scroll */
+	#scroll-indicator span {
+		font-size: 1.2rem;
+		animation: fadeInOut 4s ease-in-out infinite;
+	}
+
+	@keyframes fadeInOut {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
 	}
 </style>
