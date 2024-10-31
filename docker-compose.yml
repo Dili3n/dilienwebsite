@@ -22,5 +22,5 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`oeuvrard.com`) || Host(`195.200.15.207`)"
+      - "traefik.http.routers.app.rule=Host(`oeuvrard.com`) || Host(`195.200.15.207`) || Host(`dilienoeuvrard.com`)"
       - "traefik.http.services.app.loadbalancer.server.port=80"
